@@ -1,0 +1,22 @@
+<div class="flip-card" (click)="makeFavorite(album)">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img [src]="album.image[3]['#text']" [alt]="album.name">
+    </div>
+
+    <div class="flip-card-back">
+      <div>
+        <p>{{album.name}}</p>
+        <p><small>{{album.artist.name}}</small></p>
+        <p>
+          <button>
+            <mat-icon *ngIf="album.isFavorite;else favorite">favorite</mat-icon>
+            <ng-template #favorite>
+              <mat-icon>favorite_border</mat-icon>
+            </ng-template>
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

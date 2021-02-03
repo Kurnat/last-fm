@@ -1,0 +1,3 @@
+<div class="wrapper" *ngIf="albums.length">
+  <app-albums-item *ngFor="let album of (albums | albumFilter: search)" [album]="album"></app-albums-item>
+</div>

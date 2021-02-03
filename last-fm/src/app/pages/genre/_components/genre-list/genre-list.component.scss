@@ -1,0 +1,10 @@
+.container {
+  margin: 5rem auto 0;
+  max-width: 1000px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

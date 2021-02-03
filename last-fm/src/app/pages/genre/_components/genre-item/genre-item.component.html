@@ -1,0 +1,9 @@
+<a class="wrapper"
+  [ngStyle]="{backgroundColor: genre.backgroundColor}"
+  [routerLink]="['/genre', genre.title]"
+  >
+  {{genre.title | titlecase}}
+  <span class="img-wrapp">
+    <img [src]="genre.img" [alt]="genre.title">
+  </span>
+</a>

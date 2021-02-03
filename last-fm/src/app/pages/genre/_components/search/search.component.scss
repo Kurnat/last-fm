@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+mat-icon{
+  cursor: pointer;
+}
+
+.input {
+  margin: 0 1rem;
+  outline: none;
+}
+
+.btn{
+  background-color: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}

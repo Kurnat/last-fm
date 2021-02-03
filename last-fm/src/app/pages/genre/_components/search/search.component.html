@@ -1,0 +1,19 @@
+<header class="header">
+  <div>
+    <button
+    (click)="navigate()"
+    class="btn">back</button>
+    <input
+      (input)="searchAlbum($event)"
+      type="text"
+      class="input"
+    >
+  </div>
+  <div>
+    <mat-icon
+      [matBadge]="numberOfFavorites"
+      >
+      favorite
+    </mat-icon>
+  </div>
+</header>
