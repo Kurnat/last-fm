@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="login">
+    <div class="login__container">
+
+      <p class="login__title">Login</p>
+      <form [formGroup]="form" (ngSubmit)="submit()" class="login__form">
+
+        <input formControlName="username"
+               [class.login__input_err]="form.get('username')?.invalid && form.get('username')?.touched" type="text"
+               class="login__input" placeholder="admin"> <br>
+
+        <input formControlName="password"
+               [class.login__input_err]="form.get('password')?.invalid && form.get('password')?.touched"
+               type="password" class="login__input" placeholder="123456"> <br>
+
+        <button class="btn" type="submit">Send</button>
+
+      </form>
+  </div>
+</div>

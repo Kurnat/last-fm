@@ -1,6 +1,6 @@
 import { createReducer, on} from "@ngrx/store";
 import {ICharacter} from "../../interfaces/character";
-import {loadCharactersAction, successCharactersAction} from "./actions";
+import {loadCharactersAction, setCharactersAction, successCharactersAction} from "./actions";
 
 export interface ICharactersState {
   isLoading: boolean;
@@ -26,6 +26,11 @@ export const charactersReducer = createReducer(
   on(successCharactersAction, (state, { characters, isLoading }) => ({
     ...state,
     isLoading,
+    characters,
+  })),
+  on(setCharactersAction, (state, {characters, isLoading }) => ({
+    ...state,
+    isLoading: !!isLoading,
     characters,
   }))
 );

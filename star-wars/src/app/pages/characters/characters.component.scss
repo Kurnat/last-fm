@@ -1,11 +1,14 @@
 @import "~src/styles/mixins";
+@import "~src/styles/colors";
 
 .character{
   height: 100%;
   background: #fff url("../../../assets/images/anakin-star.jpg") center/auto 100% no-repeat;
 
-  &__cart {
-    @include card;
-    width: 200px;
+  &__search {
+    margin: 15px;
+    padding: .6rem 1rem;
+    border: 1px solid $primary-dark;
+    border-radius: .4rem;
   }
 }

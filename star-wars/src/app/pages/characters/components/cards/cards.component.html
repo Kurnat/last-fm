@@ -1,8 +1,6 @@
 <div class="wrapper">
   <div class="row">
-    <a class="col" *ngFor="let character of characters$ | async"
-       [routerLink]="['/characters', getCharacterId(character)]"
-    >
+    <a class="col" *ngFor="let character of characters$ | async" [routerLink]="['/characters', getCharacterId(character)]">
       {{character.name | titlecase }}
     </a>
   </div>

@@ -9,17 +9,21 @@ import {PlanetsComponent} from "./pages/planets/planets.component";
 import {StarshipsComponent} from "./pages/starships/starships.component";
 import {VehiclesComponent} from "./pages/vehicles/vehicles.component";
 import {CharacterComponent} from "./pages/characters/pages/character/character.component";
+import {CharactersResolverService} from "./resolvers/characters-resolver.service";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {path: '', component: MainComponent},
-  {path: 'characters', component: CharactersComponent},
+  {path: 'characters', component: CharactersComponent,  pathMatch: 'full', resolve: {
+    data: CharactersResolverService
+    }, canActivate: [CharactersResolverService]},
   {path: 'characters/:id', component: CharacterComponent},
   {path: 'films', component: FilmsComponent},
   {path: 'planets', component: PlanetsComponent},
   {path: 'starships', component: StarshipsComponent},
   {path: 'vehicles', component: VehiclesComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'admin', component: AdminComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

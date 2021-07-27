@@ -1,0 +1,46 @@
+.login{
+  background: #fff url("../../../assets/images/leia.jpg") center/auto 100% no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+
+  &__container {
+    border: 1px solid #fff;
+    background: rgba($color: #000, $alpha: 0.6);
+    border-radius: .5rem;
+    text-align: center;
+    color: #fff;
+    padding: 2rem;
+    width: 350px;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+  }
+
+  &__input {
+    width: 70%;
+    border: 1px solid #fff;
+    border-radius: .2rem;
+    margin: .5rem 0;
+    padding: .3rem;
+    color: #fff;
+    background: rgba($color: #000, $alpha: 0.2);
+
+    &_err {
+      border: 1px solid #f00;
+    }
+  }
+}
+
+
+
+.btn{
+  border: 1px solid #fff;
+  border-radius: .2rem;
+  margin: .5rem 0;
+  padding: .4rem;
+  color: #fff;
+  width: 70%;
+}

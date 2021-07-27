@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
 import { MainComponent } from './pages/main/main.component';
 import { CharactersComponent } from './pages/characters/characters.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -19,10 +19,10 @@ import { StarshipsComponent } from './pages/starships/starships.component';
 import { VehiclesComponent } from './pages/vehicles/vehicles.component';
 import { PlanetsComponent } from './pages/planets/planets.component';
 import { CardsComponent } from './pages/characters/components/cards/cards.component';
-import {metaReducers, reducers} from "./store/root.reducer";
-import {AppEffects} from "./store/effects/app.effects";
+import { metaReducers, reducers  } from "./store/root.reducer";
+import { AppEffects  } from "./store/effects/app.effects";
 import { CharacterComponent } from './pages/characters/pages/character/character.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -44,10 +44,11 @@ import {FormsModule} from "@angular/forms";
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
         StoreModule.forRoot(reducers, {metaReducers}),
         StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
         EffectsModule.forRoot([AppEffects]),
-        FormsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

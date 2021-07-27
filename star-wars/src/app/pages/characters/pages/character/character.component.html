@@ -1,3 +1,44 @@
 <div class="character wrapper">
-<div class="character__card"></div>
+<div class="character__card">
+  <ng-container *ngIf="character">
+    <p>Name: {{character.name}}</p>
+    <p>Height: {{character.height}}</p>
+    <p>Mass: {{character.mass}}</p>
+    <p>Hair color: {{character.hair_color}}</p>
+    <p>Skin Color: {{character.name}}</p>
+    <p>Eye Color: {{character.eye_color}}</p>
+    <p>Birth Year: {{character.birth_year}}</p>
+    <p>Gender: {{character.gender}}</p>
+
+<!--    <button *ngIf="!isMoreDetails" (click)="clickMoreDetails()" type="button" class="btn">-->
+<!--      More details-->
+<!--    </button>-->
+
+<!--    <ng-container *ngIf="isMoreDetails">-->
+<!--      <p *ngIf="films?.length">-->
+<!--        Films: <span *ngFor="let film of films" class="list-item">-->
+<!--            {{film.title}}-->
+<!--          </span>-->
+<!--      </p>-->
+
+<!--      <p *ngIf="species?.length">-->
+<!--        Species: <span *ngFor="let specie of species" class="list-item">-->
+<!--            {{specie.name}}-->
+<!--          </span>-->
+<!--      </p>-->
+
+<!--      <p *ngIf="vehicles?.length">-->
+<!--        Vehicles: <span *ngFor="let vehicle of vehicles" class="list-item">-->
+<!--            {{vehicle.name}}-->
+<!--          </span>-->
+<!--      </p>-->
+
+<!--      <p *ngIf="starships?.length">-->
+<!--        Starships: <span *ngFor="let starship of starships" class="list-item">-->
+<!--            {{starship.name}}-->
+<!--          </span>-->
+<!--      </p>-->
+<!--    </ng-container>-->
+  </ng-container>
+</div>
 </div>

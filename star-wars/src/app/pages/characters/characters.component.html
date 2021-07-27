@@ -1,11 +1,10 @@
 <div class="character wrapper">
-<!--  <div class="character__cart"></div>-->
   <input
     #inputRef
     [(ngModel)]="searchText"
     (keyup)="onKeyUp($event)"
     type="text"
-    class="search">
+    class="character__search">
 
-  <app-cards [characters$]="characters$"></app-cards>
+  <app-cards></app-cards>
 </div>

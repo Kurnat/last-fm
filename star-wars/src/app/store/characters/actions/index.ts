@@ -12,7 +12,15 @@ export const loadCharactersAction = createAction(
   CharactersStatus.Load,
   props<{ search: string }>()
 );
+
 export const successCharactersAction = createAction(
   CharactersStatus.Success,
   props<{ characters: ICharacter[]; isLoading: boolean }>()
 );
+
+export const setCharactersAction = createAction(
+  CharactersStatus.Success,
+  props<{ characters: ICharacter[]; isLoading: boolean }>()
+);
+
+

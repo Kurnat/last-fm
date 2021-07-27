@@ -6,7 +6,7 @@ import {charactersSelector, isLoadingSelector, searchSelector} from "../../store
 import {Store} from "@ngrx/store";
 import {debounceTime, distinctUntilChanged, startWith} from "rxjs/operators";
 import {ActivatedRoute, Data} from "@angular/router";
-import {loadCharactersAction} from "../../store/characters/actions";
+import {loadCharactersAction, setCharactersAction} from "../../store/characters/actions";
 
 @Component({
   selector: 'app-characters',
@@ -14,7 +14,8 @@ import {loadCharactersAction} from "../../store/characters/actions";
   styleUrls: ['./characters.component.scss']
 })
 export class CharactersComponent implements OnInit, AfterViewInit, OnDestroy {
-  public characters$: Observable<ICharacter[]> = this.store.select(charactersSelector)
+  public isLoading$: Observable<boolean> = this.store.select(isLoadingSelector);
+
   public searchText = '';
 
   private keyUpSubject = new Subject<string>();
@@ -25,28 +26,21 @@ export class CharactersComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('inputRef') inputRef?: ElementRef<HTMLInputElement>;
 
-  isLoading$: Observable<boolean> = this.store.select(isLoadingSelector);
 
   constructor(private characterService: CharacterService, private store: Store, private activatedRoute: ActivatedRoute) { }
 
-  // ngOnInit(): void {
-  //   this.characterService.getCharacters().subscribe(data => {
-  //     console.log(data)
-  //     this.characters = data.results
-  //   })
-  // }
-
   ngOnInit(): void {
+    this.listenOnKeyUp();
+
     this.charactersSub = this.activatedRoute.data.subscribe(
-      ({ data }: Data) => (this.characters$ = of<ICharacter[]>(data))
+      ({ data }: Data) => this.store.dispatch(setCharactersAction({characters: data, isLoading: false}))
     );
 
     this.searchSelectorSub = this.store
       .select(searchSelector)
       .subscribe((search) => (this.searchText = search));
-    this.store.dispatch(loadCharactersAction({ search: this.searchText }));
 
-    this.listenOnKeyUp();
+    this.store.dispatch(loadCharactersAction({ search: this.searchText}));
   }
 
   ngAfterViewInit() {
@@ -56,7 +50,8 @@ export class CharactersComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.searchSelectorSub?.unsubscribe();
     this.keyUpSubjectSub?.unsubscribe();
-    this.charactersSub?.unsubscribe()
+    this.keyUpSubjectSub?.unsubscribe();
+    this.charactersSub?.unsubscribe();
   }
 
   onKeyUp(event: KeyboardEvent) {
@@ -65,15 +60,11 @@ export class CharactersComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   listenOnKeyUp() {
-    this.keyUpSubject
+    this.keyUpSubjectSub = this.keyUpSubject
       .pipe(
-        startWith(''),
         debounceTime(300),
         distinctUntilChanged()
       )
-      .subscribe((search) => {
-        this.store.dispatch(loadCharactersAction({ search }));
-      });
+      .subscribe((search) => this.store.dispatch(loadCharactersAction({ search })))
   }
-
 }
