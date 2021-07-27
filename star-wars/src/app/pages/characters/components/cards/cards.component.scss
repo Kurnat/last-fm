@@ -1,0 +1,53 @@
+@import "~src/styles/mixins";
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  max-width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  >.row {
+    margin: 0 -15px;
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    >.col {
+      @include card;
+      background: rgba($color: #fff, $alpha: 0.5);
+      text-align: center;
+      margin: 15px;
+      height: calc(6rem + 64px);
+      line-height: 6rem;
+      width: calc(100% / 5 - 30px);
+      float: left;
+
+      &:hover {
+        background: rgba($color: #ccc, $alpha: 0.3);
+      }
+
+      @media screen and (max-width: 1200px) {
+        width: calc(100% / 3 - 30px);
+      }
+
+      @media screen and (max-width: 632px) {
+        width: calc(100% / 2 - 30px);
+      }
+
+      @media screen and (max-width: 422px) {
+        width: calc(100% / 1 - 30px);
+      }
+
+
+    }
+  }
+}
+
+

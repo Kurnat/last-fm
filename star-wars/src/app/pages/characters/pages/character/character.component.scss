@@ -1,0 +1,16 @@
+@import "~src/styles/mixins";
+
+.character{
+  height: 100%;
+  background: #fff url("../../../../../assets/images/ewok.jpg") center/auto 100% no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__card {
+    @include card;
+    width: 400px;
+    min-height: 300px;
+    background: rgba($color: #fff, $alpha: 0.7);
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extends": ["tslint-plugin-prettier", "tslint-config-prettier"],
+  "rules": {
+    "no-console": [false],
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true,
+        "import-sources-order": "lowercase-first",
+        "named-imports-order": "lowercase-first"
+      }
+    ],
+    "prettier": [true, "./.prettierrc"]
+  }
+}
